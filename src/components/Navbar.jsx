@@ -1,9 +1,23 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import '../css/Navbar.css';
+import logo from '../assets/planet.png';
 
 const Navbar = () => (
-  <div>
-    <h1>Space Travelers Hub</h1>
-  </div>
+  <nav>
+    <img src={logo} alt="planet" />
+    <ul>
+      <li>
+        <Link to="/rockets">Rockets</Link>
+      </li>
+      <li>
+        <Link to="/mission">Mission</Link>
+      </li>
+      <li>
+        <Link to="/">My Profile</Link>
+      </li>
+    </ul>
+  </nav>
 );
 
 export default Navbar;

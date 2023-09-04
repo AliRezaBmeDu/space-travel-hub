@@ -1,0 +1,26 @@
+nav {
+  background-color: red;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  height: 4rem;
+  padding: 1rem;
+  padding-inline: 5rem;
+}
+
+nav img {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+nav ul {
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+  list-style-type: none;
+}
+
+nav ul li {
+  color: white;
+  font-size: 1rem;
+}
