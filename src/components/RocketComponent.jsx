@@ -37,7 +37,7 @@ const RocketComponent = () => {
       <hr />
       {rocketsDB && rocketsDB.map((rocket) => (
         <div key={rocket.id} className="single-rocket">
-          <img src={rocket.flickr_images[1]} alt="rocket" />
+          <img src={rocket.flickr_images[0]} alt="rocket" />
           <div>
             <h2>{rocket.name}</h2>
             <p>{rocket.description}</p>
