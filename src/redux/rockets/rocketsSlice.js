@@ -29,17 +29,18 @@ const rocketsSlice = createSlice({
       const rocketDB = action.payload;
       const newRockets = rocketDB.map((rocket) => {
         const {
-          id,
-          name,
+          rocket_name: rocketName,
+          rocket_id: rocketId,
           description,
           flickr_images: flickrImages,
         } = rocket;
         return {
-          id, name, description, flickrImages,
+          rocketName, rocketId, description, flickrImages,
         };
       });
       if (state.rockets !== newRockets) {
         state.rockets = newRockets;
+        console.log(state.rockets);
       }
     },
     [getRockets.rejected]: (state) => {

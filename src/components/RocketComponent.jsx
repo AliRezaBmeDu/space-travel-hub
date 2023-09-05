@@ -36,15 +36,15 @@ const RocketComponent = () => {
     <div className="rockets-container">
       <hr />
       {rockets && rockets.map((rocket, index) => (
-        <div key={rocket.id} className="single-rocket">
+        <div key={rocket.rocketId} className="single-rocket">
           <img
             src={(index === 0 && firstRocketImageLoadError)
               ? placeholderImageUrl : rocket.flickrImages[0]}
             alt="rocket"
             onError={index === 0 ? handleFirstRocketImageError : undefined}
           />
-          <div>
-            <h2>{rocket.name}</h2>
+          <div className="rocket-info">
+            <strong>{rocket.rocketName}</strong>
             <p>{rocket.description}</p>
             <button type="button" className="reserve-btn">Reserve Rocket</button>
           </div>

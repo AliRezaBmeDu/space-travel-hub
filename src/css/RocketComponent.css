@@ -1,16 +1,30 @@
+:root {
+  --reserve-fontsize: 1rem;
+}
+
 .rocket-container {
   background-color: lightblue;
   color: darkblue;
-  height: 3rem;
 }
 
 .single-rocket {
   display: flex;
   justify-content: space-between;
-
-  /* flex-wrap: wrap; */
-  padding: 1rem;
+  padding-inline: 5%;
   gap: 1rem;
+  margin-top: 2rem;
+  padding-top: 0;
+}
+
+.rocket-info {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 1rem;
+  padding-top: 0;
+}
+
+.single-rocket strong {
+  font-size: 1.6rem;
 }
 
 .single-rocket img {
@@ -18,7 +32,7 @@
 }
 
 .single-rocket p {
-  font-size: 1rem;
+  font-size: 1.2rem;
 }
 
 .reserve-btn {
@@ -30,4 +44,5 @@
   padding: 0.5rem;
   font-size: 1rem;
   border-color: #966cd4;
+  width: 9.5rem;
 }
