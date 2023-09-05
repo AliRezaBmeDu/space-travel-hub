@@ -1,24 +1,13 @@
 import React, { useState, useEffect } from 'react';
+import { getRockets } from '../redux/rockets/rocketsSlice';
+import { useSelector } from 'react-redux';
 import '../css/RocketComponent.css';
 
 const RocketComponent = () => {
-  const [rocketsDB, setRocketsDB] = useState(null); // Initialize to null
-  const [isLoading, setIsLoading] = useState(true);
-
-  const getRockets = async () => {
-    try {
-      const response = await fetch('https://api.spacexdata.com/v4/rockets');
-      const output = await response.json();
-      setRocketsDB(output);
-      setIsLoading(false);
-    } catch (error) {
-      console.error('Error fetching data:', error);
-      setIsLoading(false);
-    }
-  };
-
+  const { rocketDB } = useSelector((store) => store.rocket);
+  
   useEffect(() => {
-    getRockets();
+    const rocketsDB = getRockets();
   }, []);
 
   if (isLoading) {
