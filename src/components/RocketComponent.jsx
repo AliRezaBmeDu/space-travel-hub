@@ -22,7 +22,7 @@ const RocketComponent = () => {
     );
   }
 
-  // Render the content conditionally based on the value of rocketsDB
+  // Render the content conditionally based on the value of rockets DB
   return (
     <div className="rockets-container">
       <hr />
