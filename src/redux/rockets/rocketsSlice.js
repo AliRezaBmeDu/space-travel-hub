@@ -7,7 +7,7 @@ const initialState = {
 
 export const getRockets = createAsyncThunk('rockets/getRocket', async () => {
   try {
-    const response = await fetch('https://api.spacexdata.com/v4/rockets');
+    const response = await fetch('https://api.spacexdata.com/v3/rockets');
     const output = response.json();
     return output;
   } catch (error) {
@@ -27,7 +27,7 @@ const rocketsSlice = createSlice({
     [getRockets.fulfilled]: (state, action) => {
       state.isLoading = false;
       const rocketDB = action.payload;
-      state.rockets = rocketDB.map((rocket) => {
+      const newRockets = rocketDB.map((rocket) => {
         const {
           id,
           name,
@@ -38,6 +38,9 @@ const rocketsSlice = createSlice({
           id, name, description, flickrImages,
         };
       });
+      if (state.rockets !== newRockets) {
+        state.rockets = newRockets;
+      }
     },
     [getRockets.rejected]: (state) => {
       state.isLoading = false;

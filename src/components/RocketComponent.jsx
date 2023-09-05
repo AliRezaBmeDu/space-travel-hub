@@ -1,16 +1,25 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getRockets } from '../redux/rockets/rocketsSlice';
 import '../css/RocketComponent.css';
+
+// Placeholder image URL for the first rocket if it fails to load
+const placeholderImageUrl = 'https://i.imgur.com/DaCfMsj.jpg';
 
 const RocketComponent = () => {
   const dispatch = useDispatch();
   const { rockets } = useSelector((store) => store.rockets);
   const { isLoading } = useSelector((store) => store.rockets);
+  const [firstRocketImageLoadError, setFirstRocketImageLoadError] = useState(false);
 
   useEffect(() => {
     dispatch(getRockets());
   }, [dispatch]);
+
+  // Function to handle image load error for the first rocket
+  const handleFirstRocketImageError = () => {
+    setFirstRocketImageLoadError(true);
+  };
 
   if (isLoading) {
     return (
@@ -26,9 +35,14 @@ const RocketComponent = () => {
   return (
     <div className="rockets-container">
       <hr />
-      {rockets && rockets.map((rocket) => (
+      {rockets && rockets.map((rocket, index) => (
         <div key={rocket.id} className="single-rocket">
-          <img src={rocket.flickrImages[0]} alt="rocket" />
+          <img
+            src={(index === 0 && firstRocketImageLoadError)
+              ? placeholderImageUrl : rocket.flickrImages[0]}
+            alt="rocket"
+            onError={index === 0 ? handleFirstRocketImageError : undefined}
+          />
           <div>
             <h2>{rocket.name}</h2>
             <p>{rocket.description}</p>
