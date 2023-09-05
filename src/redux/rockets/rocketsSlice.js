@@ -15,3 +15,23 @@ export const getRockets = createAsyncThunk('rockets/getRocket', async () => {
         throw error;
     }
 });
+
+const rocketsSlice = createSlice({
+    name: 'rockets',
+    initialState,
+    reducers: {},
+    extraReducers: {
+        [getRockets.pending]: (state) => {
+            state.isLoading = true;
+        },
+        [getRockets.fulfilled]: (state, action) => {
+            state.rockets = [...state.rockets, action.payload];
+            state.isLoading = false;
+        },
+        [getRockets.rejected]: (state) => {
+            state.isLoading = false;
+        },
+    },
+});
+
+export default rocketsSlice.reducer;
