@@ -1,13 +1,14 @@
-import React, { useState, useEffect } from 'react';
-import { getRockets } from '../redux/rockets/rocketsSlice';
+import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
+import { getRockets } from '../redux/rockets/rocketsSlice';
 import '../css/RocketComponent.css';
 
 const RocketComponent = () => {
-  const { rocketDB } = useSelector((store) => store.rocket);
-  
+  let { rocketsDB } = useSelector((store) => store.rockets);
+  const { isLoading } = useSelector((store) => store.rockets);
+
   useEffect(() => {
-    const rocketsDB = getRockets();
+    rocketsDB = getRockets();
   }, []);
 
   if (isLoading) {
