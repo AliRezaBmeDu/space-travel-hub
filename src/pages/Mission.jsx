@@ -1,8 +1,9 @@
 import React from 'react';
+import MissionsComponent from '../components/MissionsComponent';
 
 const Mission = () => (
   <div>
-    Demo Mission
+    <MissionsComponent />
   </div>
 );
 
