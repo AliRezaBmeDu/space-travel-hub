@@ -1,15 +1,16 @@
 import React, { useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { getRockets } from '../redux/rockets/rocketsSlice';
 import '../css/RocketComponent.css';
 
 const RocketComponent = () => {
-  let { rocketsDB } = useSelector((store) => store.rockets);
+  const dispatch = useDispatch();
+  const { rockets } = useSelector((store) => store.rockets);
   const { isLoading } = useSelector((store) => store.rockets);
 
   useEffect(() => {
-    rocketsDB = getRockets();
-  }, []);
+    dispatch(getRockets());
+  }, [dispatch]);
 
   if (isLoading) {
     return (
@@ -25,9 +26,9 @@ const RocketComponent = () => {
   return (
     <div className="rockets-container">
       <hr />
-      {rocketsDB && rocketsDB.map((rocket) => (
+      {rockets && rockets.map((rocket) => (
         <div key={rocket.id} className="single-rocket">
-          <img src={rocket.flickr_images[0]} alt="rocket" />
+          <img src={rocket.flickrImages[0]} alt="rocket" />
           <div>
             <h2>{rocket.name}</h2>
             <p>{rocket.description}</p>
