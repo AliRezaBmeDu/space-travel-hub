@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  rockets: [],
+  rockets: null,
   isLoading: true,
 };
 
@@ -26,8 +26,19 @@ const rocketsSlice = createSlice({
       state.isLoading = true;
     },
     [getRockets.fulfilled]: (state, action) => {
-      state.rockets = [...state.rockets, action.payload];
       state.isLoading = false;
+      const rocketDB = action.payload;
+      state.rockets = rocketDB.map((rocket) => {
+        const {
+          id,
+          name,
+          description,
+          flickr_images: flickrImages,
+        } = rocket;
+        return {
+          id, name, description, flickrImages,
+        };
+      });
     },
     [getRockets.rejected]: (state) => {
       state.isLoading = false;
