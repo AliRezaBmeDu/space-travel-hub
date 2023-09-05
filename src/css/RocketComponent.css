@@ -1,0 +1,21 @@
+.rocket-container {
+    background-color: lightblue;
+    color: darkblue;
+    height: 3rem;
+}
+
+.single-rocket {
+    display: flex;
+    justify-content: space-between;
+    /* flex-wrap: wrap; */
+    padding: 1rem;
+    gap: 1rem;
+}
+
+.single-rocket img {
+    width: 20%;
+}
+
+.single-rocket p {
+    font-size: 1rem;
+}
