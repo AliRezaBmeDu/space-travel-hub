@@ -20,3 +20,14 @@
 .single-rocket p {
   font-size: 1rem;
 }
+
+.reserve-btn {
+  box-sizing: border-box;
+  border-radius: 4px;
+  background-color: #966cd4;
+  color: white;
+  height: 2.5rem;
+  padding: 0.5rem;
+  font-size: 1rem;
+  border-color: #966cd4;
+}
