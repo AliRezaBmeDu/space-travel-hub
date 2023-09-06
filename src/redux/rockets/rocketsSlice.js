@@ -54,7 +54,6 @@ const rocketsSlice = createSlice({
             rocketName, rocketId, description, flickrImages, reserve: bool,
           };
         });
-        console.log(newRockets);
         state.rockets = newRockets;
       }
     },
