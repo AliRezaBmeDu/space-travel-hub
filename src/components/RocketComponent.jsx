@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getRockets, reserveRocket } from '../redux/rockets/rocketsSlice';
+import { getRockets, reserveRocket, cancelReserve } from '../redux/rockets/rocketsSlice';
 import '../css/RocketComponent.css';
 
 // Placeholder image URL for the first rocket if it fails to load
@@ -27,7 +27,7 @@ const RocketComponent = () => {
   const handleReserveButton = (id, reserve) => {
     localStorage.setItem(id, JSON.stringify(reserve));
     if(reserve){
-      dispatch()
+      dispatch(cancelReserve(id));
     } else {
       dispatch(reserveRocket(id));
     }
