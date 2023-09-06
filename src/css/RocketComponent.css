@@ -37,6 +37,16 @@
   font-size: 1.2rem;
 }
 
+.reserved-state {
+  border-radius: 2px;
+  padding: 0.2rem;
+  padding-inline: 0.5rem;
+  font-size: 0.8rem;
+  background-color: #57738f;
+  color: white;
+  margin-right: 16px;
+}
+
 .reserve-btn {
   box-sizing: border-box;
   border-radius: 4px;

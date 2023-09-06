@@ -53,7 +53,7 @@ const RocketComponent = () => {
             <p>
               <span>
                 {rocket.reserve && (
-                  <span style={{ backgroundColor: 'yellow', marginRight: '10px' }}>
+                  <span className="reserved-state">
                     Reserved
                   </span>
                 )}
