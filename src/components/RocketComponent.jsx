@@ -16,8 +16,6 @@ const RocketComponent = () => {
     dispatch(getRockets());
   }, [dispatch]);
 
-  console.log('How the rockets look like: ', rockets);
-
   // Function to handle image load error for the first rocket
   const handleFirstRocketImageError = () => {
     setFirstRocketImageLoadError(true);
