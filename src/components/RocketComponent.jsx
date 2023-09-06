@@ -1,25 +1,25 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { getRockets } from '../redux/rockets/rocketsSlice';
 import '../css/RocketComponent.css';
 
-const RocketComponent = () => {
-  const [rocketsDB, setRocketsDB] = useState(null); // Initialize to null
-  const [isLoading, setIsLoading] = useState(true);
+// Placeholder image URL for the first rocket if it fails to load
+const placeholderImageUrl = 'https://i.imgur.com/DaCfMsj.jpg';
 
-  const getRockets = async () => {
-    try {
-      const response = await fetch('https://api.spacexdata.com/v4/rockets');
-      const output = await response.json();
-      setRocketsDB(output);
-      setIsLoading(false);
-    } catch (error) {
-      console.error('Error fetching data:', error);
-      setIsLoading(false);
-    }
-  };
+const RocketComponent = () => {
+  const dispatch = useDispatch();
+  const { rockets } = useSelector((store) => store.rockets);
+  const { isLoading } = useSelector((store) => store.rockets);
+  const [firstRocketImageLoadError, setFirstRocketImageLoadError] = useState(false);
 
   useEffect(() => {
-    getRockets();
-  }, []);
+    dispatch(getRockets());
+  }, [dispatch]);
+
+  // Function to handle image load error for the first rocket
+  const handleFirstRocketImageError = () => {
+    setFirstRocketImageLoadError(true);
+  };
 
   if (isLoading) {
     return (
@@ -31,15 +31,20 @@ const RocketComponent = () => {
     );
   }
 
-  // Render the content conditionally based on the value of rocketsDB
+  // Render the content conditionally based on the value of rockets DB
   return (
     <div className="rockets-container">
       <hr />
-      {rocketsDB && rocketsDB.map((rocket) => (
-        <div key={rocket.id} className="single-rocket">
-          <img src={rocket.flickr_images[0]} alt="rocket" />
-          <div>
-            <h2>{rocket.name}</h2>
+      {rockets && rockets.map((rocket, index) => (
+        <div key={rocket.rocketId} className="single-rocket">
+          <img
+            src={(index === 0 && firstRocketImageLoadError)
+              ? placeholderImageUrl : rocket.flickrImages[0]}
+            alt="rocket"
+            onError={index === 0 ? handleFirstRocketImageError : undefined}
+          />
+          <div className="rocket-info">
+            <strong>{rocket.rocketName}</strong>
             <p>{rocket.description}</p>
             <button type="button" className="reserve-btn">Reserve Rocket</button>
           </div>
