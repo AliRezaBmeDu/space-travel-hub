@@ -16,9 +16,17 @@ const RocketComponent = () => {
     dispatch(getRockets());
   }, [dispatch]);
 
+  console.log(rockets);
+
   // Function to handle image load error for the first rocket
   const handleFirstRocketImageError = () => {
     setFirstRocketImageLoadError(true);
+  };
+
+  // Function to handle reserve button
+  const handleReserveButton = (id) => {
+    localStorage.setItem(id, JSON.stringify('true'));
+    dispatch(reserveRocket(id));
   };
 
   if (isLoading) {
@@ -55,7 +63,7 @@ const RocketComponent = () => {
                 {rocket.description}
               </span>
             </p>
-            <button type="button" className="reserve-btn" onClick={() => dispatch(reserveRocket(rocket.rocketId))}>Reserve Rocket</button>
+            <button type="button" className="reserve-btn" onClick={() => handleReserveButton(rocket.rocketId)}>Reserve Rocket</button>
           </div>
         </div>
       ))}

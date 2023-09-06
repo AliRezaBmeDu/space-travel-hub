@@ -36,21 +36,26 @@ const rocketsSlice = createSlice({
     },
     [getRockets.fulfilled]: (state, action) => {
       state.isLoading = false;
-      const rocketDB = action.payload;
-      const newRockets = rocketDB.map((rocket) => {
-        const {
-          rocket_name: rocketName,
-          rocket_id: rocketId,
-          description,
-          flickr_images: flickrImages,
-        } = rocket;
-        return {
-          rocketName, rocketId, description, flickrImages, reserve: false,
-        };
-      });
-      if (state.rockets !== newRockets) {
+      let rocketDB = state.rockets;
+      console.log('rocketDB', rocketDB);
+      const fetchedRockets = action.payload;
+      let bool = false;
+      if (state.rockets === null) {
+        rocketDB = fetchedRockets;
+        const newRockets = rocketDB.map((rocket) => {
+          const {
+            rocket_name: rocketName,
+            rocket_id: rocketId,
+            description,
+            flickr_images: flickrImages,
+          } = rocket;
+          bool = localStorage.getItem(rocketId) || false;
+          return {
+            rocketName, rocketId, description, flickrImages, reserve: bool,
+          };
+        });
+        console.log(newRockets);
         state.rockets = newRockets;
-        console.log(state.rockets);
       }
     },
     [getRockets.rejected]: (state) => {
