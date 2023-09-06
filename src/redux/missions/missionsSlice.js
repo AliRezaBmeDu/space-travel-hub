@@ -18,7 +18,14 @@ export const fetchMissions = createAsyncThunk('missions/fetchMissions', async (_
 const missionsSlice = createSlice({
   name: 'mission',
   initialState,
-  reducers: {},
+  reducers: {
+    joinMission: (state, action) => {
+      const { id } = action.payload;
+      const mission = state.missions.find((mission) => mission.id === id);
+      mission.joined = !mission.joined;
+      localStorage.setItem(id, !mission.joined);
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchMissions.pending, (state) => {
@@ -30,7 +37,10 @@ const missionsSlice = createSlice({
         if (data) {
           state.missions = data.map((mission) => {
             const { mission_id: id, mission_name: name, description } = mission;
-            return { id, name, description };
+            const joined = localStorage.getItem(id) || false;
+            return {
+              id, name, description, joined,
+            };
           });
         }
       })
@@ -41,4 +51,5 @@ const missionsSlice = createSlice({
   },
 });
 
+export const { joinMission } = missionsSlice.actions;
 export default missionsSlice.reducer;

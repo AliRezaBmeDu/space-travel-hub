@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchMissions } from '../redux/missions/missionsSlice';
+import { fetchMissions, joinMission } from '../redux/missions/missionsSlice';
 import '../css/MissionsComponent.css';
 
 const MissionsComponent = () => {
@@ -25,7 +25,9 @@ const MissionsComponent = () => {
         <tbody>
           {
             missions.map((mission) => {
-              const { name, id, description } = mission;
+              const {
+                name, id, description, joined,
+              } = mission;
               return (
                 <tr key={id}>
                   <th>{name}</th>
@@ -33,10 +35,19 @@ const MissionsComponent = () => {
                     {description}
                   </td>
                   <td>
-                    <button type="button">not a member</button>
+                    <button
+                      type="button"
+                    >
+                      {joined ? 'Active Member' : 'Not a Member'}
+                    </button>
                   </td>
                   <td>
-                    <button type="button">Join Mission</button>
+                    <button
+                      type="button"
+                      onClick={() => dispatch(joinMission({ id }))}
+                    >
+                      { joined ? 'Leave Mission' : 'Join Mission'}
+                    </button>
                   </td>
                 </tr>
               );
