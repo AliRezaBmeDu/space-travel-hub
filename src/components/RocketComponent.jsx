@@ -28,10 +28,8 @@ const RocketComponent = () => {
 
   if (isLoading) {
     return (
-      <div className="quote-container">
-        <div className="quote-author">
-          <p>Loading...</p>
-        </div>
+      <div className="loading">
+        <p>Loading...Rockets</p>
       </div>
     );
   }
