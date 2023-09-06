@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getRockets, reserveRocket, cancelReserve } from '../redux/rockets/rocketsSlice';
+import { getRockets, toggleReserve } from '../redux/rockets/rocketsSlice';
 import '../css/RocketComponent.css';
 
 // Placeholder image URL for the first rocket if it fails to load
@@ -16,7 +16,7 @@ const RocketComponent = () => {
     dispatch(getRockets());
   }, [dispatch]);
 
-  console.log(rockets);
+  console.log('How the rockets look like: ', rockets);
 
   // Function to handle image load error for the first rocket
   const handleFirstRocketImageError = () => {
@@ -24,14 +24,8 @@ const RocketComponent = () => {
   };
 
   // Function to handle reserve button
-  const handleReserveButton = (id, reserve) => {
-    localStorage.setItem(id, JSON.stringify(reserve));
-    if(reserve){
-      dispatch(cancelReserve(id));
-    } else {
-      dispatch(reserveRocket(id));
-    }
-    
+  const handleReserveButton = (id) => {
+    dispatch(toggleReserve(id));
   };
 
   if (isLoading) {
@@ -68,12 +62,12 @@ const RocketComponent = () => {
                 {rocket.description}
               </span>
             </p>
-            <button 
-              type="button" 
-              className="reserve-btn" 
-              onClick={() => handleReserveButton(rocket.rocketId, rocket.reserve)}
+            <button
+              type="button"
+              className="reserve-btn"
+              onClick={() => handleReserveButton(rocket.rocketId)}
             >
-                { rocket.reserve ? 'Cancel Reservation' : 'Reserve Rocket' }
+              { rocket.reserve ? 'Cancel Reservation' : 'Reserve Rocket' }
             </button>
           </div>
         </div>

@@ -20,23 +20,12 @@ const rocketsSlice = createSlice({
   name: 'rockets',
   initialState,
   reducers: {
-    reserveRocket: (state, action) => {
+    toggleReserve: (state, action) => {
       const id = action.payload;
-      const newState = state.rockets.map((rocket) => {
-        if (rocket.rocketId !== id) return rocket;
-        return { ...rocket, reserve: true };
-      });
-      state.rockets = newState;
-      console.log('newState', newState);
+      const rocket = state.rockets.find((rocket) => rocket.rocketId === id);
+      rocket.reserve = !rocket.reserve;
+      localStorage.setItem(id, rocket.reserve);
     },
-    cancelReserve: (state, action) => {
-      const id = action.payload;
-      const newState = state.rockets.map((rocket) => {
-        if (rocket.rocketId !== id) return rocket;
-        return { ...rocket, reserve: false };
-      });
-      state.rockets = newState;
-    }
   },
   extraReducers: {
     [getRockets.pending]: (state) => {
@@ -44,12 +33,8 @@ const rocketsSlice = createSlice({
     },
     [getRockets.fulfilled]: (state, action) => {
       state.isLoading = false;
-      let rocketDB = state.rockets;
-      console.log('rocketDB', rocketDB);
-      const fetchedRockets = action.payload;
-      let bool = false;
-      if (state.rockets === null) {
-        rocketDB = fetchedRockets;
+      const rocketDB = action.payload;
+      if (rocketDB) {
         const newRockets = rocketDB.map((rocket) => {
           const {
             rocket_name: rocketName,
@@ -57,9 +42,14 @@ const rocketsSlice = createSlice({
             description,
             flickr_images: flickrImages,
           } = rocket;
-          bool = localStorage.getItem(rocketId) || false;
+          console.log('Id when getting: ', rocketId);
+          const bool = localStorage.getItem(rocketId);
+          let reserve = false;
+          if (bool === 'true') {
+            reserve = bool;
+          }
           return {
-            rocketName, rocketId, description, flickrImages, reserve: bool,
+            rocketName, rocketId, description, flickrImages, reserve,
           };
         });
         state.rockets = newRockets;
@@ -71,6 +61,6 @@ const rocketsSlice = createSlice({
   },
 });
 
-export const { reserveRocket, cancelReserve } = rocketsSlice.actions;
+export const { toggleReserve } = rocketsSlice.actions;
 
 export default rocketsSlice.reducer;
