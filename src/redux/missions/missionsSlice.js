@@ -38,7 +38,9 @@ const missionsSlice = createSlice({
           state.missions = data.map((mission) => {
             const { mission_id: id, mission_name: name, description } = mission;
             const joined = localStorage.getItem(id) || false;
-            return { id, name, description, joined };
+            return {
+              id, name, description, joined,
+            };
           });
         }
       })
