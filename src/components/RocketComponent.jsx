@@ -45,7 +45,14 @@ const RocketComponent = () => {
           />
           <div className="rocket-info">
             <strong>{rocket.rocketName}</strong>
-            <p>{rocket.description}</p>
+            <span>
+              {rocket.reserve && (
+                <span style={{ backgroundColor: 'yellow', marginRight: '5px' }}>
+                  Reserved
+                </span>
+              )}
+              {rocket.description}
+            </span>
             <button type="button" className="reserve-btn">Reserve Rocket</button>
           </div>
         </div>
