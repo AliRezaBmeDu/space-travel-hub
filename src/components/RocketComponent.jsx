@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getRockets } from '../redux/rockets/rocketsSlice';
+import { getRockets, reserveRocket } from '../redux/rockets/rocketsSlice';
 import '../css/RocketComponent.css';
 
 // Placeholder image URL for the first rocket if it fails to load
@@ -45,15 +45,17 @@ const RocketComponent = () => {
           />
           <div className="rocket-info">
             <strong>{rocket.rocketName}</strong>
-            <span>
-              {rocket.reserve && (
-                <span style={{ backgroundColor: 'yellow', marginRight: '5px' }}>
-                  Reserved
-                </span>
-              )}
-              {rocket.description}
-            </span>
-            <button type="button" className="reserve-btn">Reserve Rocket</button>
+            <p>
+              <span>
+                {rocket.reserve && (
+                  <span style={{ backgroundColor: 'yellow', marginRight: '10px' }}>
+                    Reserved
+                  </span>
+                )}
+                {rocket.description}
+              </span>
+            </p>
+            <button type="button" className="reserve-btn" onClick={() => dispatch(reserveRocket(rocket.rocketId))}>Reserve Rocket</button>
           </div>
         </div>
       ))}
