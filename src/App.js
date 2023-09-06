@@ -7,11 +7,13 @@ import Profile from './pages/Profile';
 import Mission from './pages/Mission';
 import Rocket from './pages/Rocket';
 import { getRockets } from './redux/rockets/rocketsSlice';
+import { fetchMissions } from './redux/missions/missionsSlice';
 
 function App() {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getRockets());
+    dispatch(fetchMissions());
   }, [dispatch]);
   return (
     <Router>
