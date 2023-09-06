@@ -29,6 +29,10 @@ const RocketComponent = () => {
     dispatch(reserveRocket(id));
   };
 
+  const handleCancelButton = (id) => {
+    localStorage.setItem(id, false);
+  }
+
   if (isLoading) {
     return (
       <div className="quote-container">
@@ -64,6 +68,7 @@ const RocketComponent = () => {
               </span>
             </p>
             <button type="button" className="reserve-btn" onClick={() => handleReserveButton(rocket.rocketId)}>Reserve Rocket</button>
+            <button type="button" className="reserve-btn" onClick={() => handleReserveButton(rocket.rocketId)}>Cancel Reservation</button>
           </div>
         </div>
       ))}
