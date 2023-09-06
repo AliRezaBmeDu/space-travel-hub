@@ -1,8 +1,9 @@
 import React from 'react';
+import ProfileRocket from '../components/ProfileRocket';
 
 const Profile = () => (
   <div>
-    Demo Profile
+    <ProfileRocket />
   </div>
 );
 

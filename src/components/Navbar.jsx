@@ -8,13 +8,13 @@ const Navbar = () => (
     <img src={logo} alt="planet" />
     <ul>
       <li>
-        <Link to="/rockets">Rockets</Link>
+        <Link to="/">Rockets</Link>
       </li>
       <li>
         <Link to="/missions">Mission</Link>
       </li>
       <li>
-        <Link to="/">My Profile</Link>
+        <Link to="/profile">My Profile</Link>
       </li>
     </ul>
   </nav>

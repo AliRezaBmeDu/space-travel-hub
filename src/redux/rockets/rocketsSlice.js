@@ -45,7 +45,7 @@ const rocketsSlice = createSlice({
           const bool = localStorage.getItem(rocketId);
           let reserve = false;
           if (bool === 'true') {
-            reserve = bool;
+            reserve = true;
           }
           return {
             rocketName, rocketId, description, flickrImages, reserve,
