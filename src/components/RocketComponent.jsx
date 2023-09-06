@@ -24,14 +24,15 @@ const RocketComponent = () => {
   };
 
   // Function to handle reserve button
-  const handleReserveButton = (id) => {
-    localStorage.setItem(id, JSON.stringify('true'));
-    dispatch(reserveRocket(id));
+  const handleReserveButton = (id, reserve) => {
+    localStorage.setItem(id, JSON.stringify(reserve));
+    if(reserve){
+      dispatch()
+    } else {
+      dispatch(reserveRocket(id));
+    }
+    
   };
-
-  const handleCancelButton = (id) => {
-    localStorage.setItem(id, false);
-  }
 
   if (isLoading) {
     return (
@@ -67,8 +68,13 @@ const RocketComponent = () => {
                 {rocket.description}
               </span>
             </p>
-            <button type="button" className="reserve-btn" onClick={() => handleReserveButton(rocket.rocketId)}>Reserve Rocket</button>
-            <button type="button" className="reserve-btn" onClick={() => handleReserveButton(rocket.rocketId)}>Cancel Reservation</button>
+            <button 
+              type="button" 
+              className="reserve-btn" 
+              onClick={() => handleReserveButton(rocket.rocketId, rocket.reserve)}
+            >
+                { rocket.reserve ? 'Cancel Reservation' : 'Reserve Rocket' }
+            </button>
           </div>
         </div>
       ))}
