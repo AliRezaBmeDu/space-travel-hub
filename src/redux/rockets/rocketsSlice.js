@@ -42,7 +42,6 @@ const rocketsSlice = createSlice({
             description,
             flickr_images: flickrImages,
           } = rocket;
-          console.log('Id when getting: ', rocketId);
           const bool = localStorage.getItem(rocketId);
           let reserve = false;
           if (bool === 'true') {

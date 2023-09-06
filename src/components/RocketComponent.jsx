@@ -62,7 +62,7 @@ const RocketComponent = () => {
             </p>
             <button
               type="button"
-              className="reserve-btn"
+              className={`reserve-btn ${rocket.reserve ? 'cancel-reservation-btn' : ''}`}
               onClick={() => handleReserveButton(rocket.rocketId)}
             >
               { rocket.reserve ? 'Cancel Reservation' : 'Reserve Rocket' }

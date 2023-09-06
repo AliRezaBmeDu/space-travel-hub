@@ -48,3 +48,10 @@
   border-color: #966cd4;
   width: 9.5rem;
 }
+
+.cancel-reservation-btn {
+  background-color: white;
+  color: #001f3f;
+  border: solid 1px darkblue;
+  width: 11rem;
+}
