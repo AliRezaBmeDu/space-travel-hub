@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getRockets } from '../redux/rockets/rocketsSlice';
+import { getRockets, toggleReserve } from '../redux/rockets/rocketsSlice';
 import '../css/RocketComponent.css';
 
 // Placeholder image URL for the first rocket if it fails to load
@@ -21,12 +21,15 @@ const RocketComponent = () => {
     setFirstRocketImageLoadError(true);
   };
 
+  // Function to handle reserve button
+  const handleReserveButton = (id) => {
+    dispatch(toggleReserve(id));
+  };
+
   if (isLoading) {
     return (
-      <div className="quote-container">
-        <div className="quote-author">
-          <p>Loading...</p>
-        </div>
+      <div className="loading">
+        <p>Loading...Rockets</p>
       </div>
     );
   }
@@ -45,8 +48,23 @@ const RocketComponent = () => {
           />
           <div className="rocket-info">
             <strong>{rocket.rocketName}</strong>
-            <p>{rocket.description}</p>
-            <button type="button" className="reserve-btn">Reserve Rocket</button>
+            <p>
+              <span>
+                {rocket.reserve && (
+                  <span className="reserved-state">
+                    Reserved
+                  </span>
+                )}
+                {rocket.description}
+              </span>
+            </p>
+            <button
+              type="button"
+              className={`reserve-btn ${rocket.reserve ? 'cancel-reservation-btn' : ''}`}
+              onClick={() => handleReserveButton(rocket.rocketId)}
+            >
+              { rocket.reserve ? 'Cancel Reservation' : 'Reserve Rocket' }
+            </button>
           </div>
         </div>
       ))}

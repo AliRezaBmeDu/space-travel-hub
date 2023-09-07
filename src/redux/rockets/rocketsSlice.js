@@ -19,7 +19,14 @@ export const getRockets = createAsyncThunk('rockets/getRocket', async () => {
 const rocketsSlice = createSlice({
   name: 'rockets',
   initialState,
-  reducers: {},
+  reducers: {
+    toggleReserve: (state, action) => {
+      const id = action.payload;
+      const rocket = state.rockets.find((rocket) => rocket.rocketId === id);
+      rocket.reserve = !rocket.reserve;
+      localStorage.setItem(id, rocket.reserve);
+    },
+  },
   extraReducers: {
     [getRockets.pending]: (state) => {
       state.isLoading = true;
@@ -27,20 +34,24 @@ const rocketsSlice = createSlice({
     [getRockets.fulfilled]: (state, action) => {
       state.isLoading = false;
       const rocketDB = action.payload;
-      const newRockets = rocketDB.map((rocket) => {
-        const {
-          rocket_name: rocketName,
-          rocket_id: rocketId,
-          description,
-          flickr_images: flickrImages,
-        } = rocket;
-        return {
-          rocketName, rocketId, description, flickrImages,
-        };
-      });
-      if (state.rockets !== newRockets) {
+      if (rocketDB) {
+        const newRockets = rocketDB.map((rocket) => {
+          const {
+            rocket_name: rocketName,
+            rocket_id: rocketId,
+            description,
+            flickr_images: flickrImages,
+          } = rocket;
+          const bool = localStorage.getItem(rocketId);
+          let reserve = false;
+          if (bool === 'true') {
+            reserve = bool;
+          }
+          return {
+            rocketName, rocketId, description, flickrImages, reserve,
+          };
+        });
         state.rockets = newRockets;
-        console.log(state.rockets);
       }
     },
     [getRockets.rejected]: (state) => {
@@ -48,5 +59,7 @@ const rocketsSlice = createSlice({
     },
   },
 });
+
+export const { toggleReserve } = rocketsSlice.actions;
 
 export default rocketsSlice.reducer;
