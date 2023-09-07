@@ -26,7 +26,7 @@ const MissionsComponent = () => {
                 name, id, description, joined,
               } = mission;
               return (
-                <tr key={id}>
+                <tr key={id} data-testid="mission">
                   <th>{name}</th>
                   <td>
                     {description}
