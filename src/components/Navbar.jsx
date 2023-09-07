@@ -5,7 +5,10 @@ import logo from '../assets/planet.png';
 
 const Navbar = () => (
   <nav>
+    <div className="header">
     <img src={logo} alt="planet" />
+    <h1>Space Traverers' Hub</h1>
+    </div>
     <ul>
       <li>
         <Link to="/">Rockets</Link>
