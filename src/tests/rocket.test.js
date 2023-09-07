@@ -47,7 +47,6 @@ describe('RocketComponent', () => {
       </Provider>,
     );
 
-    // Replace these with appropriate selectors
     const rocketElements = screen.getAllByTestId('rocket');
     expect(rocketElements).toHaveLength(rockets.length);
   });
