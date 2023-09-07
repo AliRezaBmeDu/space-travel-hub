@@ -25,7 +25,13 @@
 
 # 📖 Space-Cruise <a name="about-project"></a>
 
-**Space-Cruise** aims to create a space travelers' hub web application, which delivers two distinct pages for the rockets and missions. In this application, users can navigate through the collection of rockets spaceX have. They can reserve rocket for their mission  and cancle the reservation in real-time. In the mission page, users have the feature to join the specific mission and ofcourse they can leave the mission as well. There is a third page for the user's profile which collectively shows the rockets user reserved and the missions he/she already signed up for. The project is built with react framework with redux for state management. The design was carried out by css.
+**Space-Cruise** is a web application designed to serve as a central hub for space travelers. It offers two main pages, one dedicated to providing information about various rockets available through SpaceX, and the other focused on detailing ongoing missions. Users of this application can explore a catalog of rockets and have the ability to reserve a rocket for their own missions. They can also cancel their reservation in real-time if needed.
+
+In the mission section of the app, users can view and join specific missions that interest them. Additionally, they have the option to leave a mission they previously signed up for.
+
+A third page in the application is dedicated to user profiles. Here, users can see a summary of the rockets they have reserved and the missions they have joined.
+
+Space-Cruise is built using the React framework and employs Redux for state management. The visual design is created using CSS.
 
 ## 🛠 Built With <a name="built-with"></a>
 
@@ -123,7 +129,7 @@ To run the project, execute the following command:
 
 - [ ]**Multiple facets of a particular rocket in a dedicated modal**
 - [ ]**Dedicated modal for particular mission**
-- [ ]**Modals for the confirmation of join/leave reserve/cancel-reservation**
+- [ ]**Modals for the confirmation of the join/leave and the reserve/cancel-reservation**
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
