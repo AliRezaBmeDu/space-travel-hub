@@ -8,6 +8,7 @@ const Navbar = () => {
     textDecoration: 'underline',
     backgroundColor: 'transparent',
     color: 'orange',
+    fontSize: '1.2rem',
   };
   return (
     <nav>
