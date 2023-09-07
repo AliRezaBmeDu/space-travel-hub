@@ -14,7 +14,7 @@ const MissionsComponent = () => {
             <th>Mission</th>
             <th>Description</th>
             <th>Status</th>
-            <th>
+            <th className="empty-space">
           &nbsp;
             </th>
           </tr>
@@ -34,6 +34,7 @@ const MissionsComponent = () => {
                   <td>
                     <button
                       type="button"
+                      className={`${joined ? 'active' : 'non-active'} member-button`}
                     >
                       {joined ? 'Active Member' : 'Not a Member'}
                     </button>
@@ -41,6 +42,7 @@ const MissionsComponent = () => {
                   <td>
                     <button
                       type="button"
+                      className={`${joined ? 'leave-mission' : 'join-mission'} mission-button`}
                       onClick={() => dispatch(joinMission({ id }))}
                     >
                       { joined ? 'Leave Mission' : 'Join Mission'}
