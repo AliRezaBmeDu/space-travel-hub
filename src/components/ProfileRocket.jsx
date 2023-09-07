@@ -9,7 +9,7 @@ const ProfileRocket = () => {
   if (!rockets) {
     return (
       <div className="reserved-container">
-        <h2>Reserved Rockets</h2>
+        <h2>My Rockets</h2>
         <div className="rocket-profile">
           <p>Loading...</p>
         </div>

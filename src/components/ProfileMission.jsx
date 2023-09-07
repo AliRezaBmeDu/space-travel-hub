@@ -19,7 +19,7 @@ const ProfileMission = () => {
 
   return (
     <div className="reserved-container">
-      <h2>Joined Missions</h2>
+      <h2>My Missions</h2>
       {joinedMissions && joinedMissions.map((mission) => (
         <div key={mission.id} className="rocket-profile">
           <p>{mission.name}</p>

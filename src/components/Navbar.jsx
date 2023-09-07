@@ -22,6 +22,7 @@ const Navbar = () => {
         <li>
           <NavLink to="/missions" className="nav-link" style={({ isActive }) => (isActive ? activeNavLink : undefined)}>Mission</NavLink>
         </li>
+        <span>|</span>
         <li>
           <NavLink to="/profile" className="nav-link" style={({ isActive }) => (isActive ? activeNavLink : undefined)}>My Profile</NavLink>
         </li>
