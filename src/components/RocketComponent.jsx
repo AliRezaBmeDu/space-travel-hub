@@ -9,6 +9,7 @@ const placeholderImageUrl = 'https://i.imgur.com/DaCfMsj.jpg';
 const RocketComponent = () => {
   const dispatch = useDispatch();
   const { rockets } = useSelector((store) => store.rockets);
+  console.log('rockets at rocket component', rockets);
   const { isLoading } = useSelector((store) => store.rockets);
   const [firstRocketImageLoadError, setFirstRocketImageLoadError] = useState(false);
 
