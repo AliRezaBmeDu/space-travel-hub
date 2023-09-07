@@ -3,7 +3,8 @@ nav {
   justify-content: space-between;
   align-items: center;
   background-color: rgb(252, 249, 249);
-  padding: 20px;
+  padding: 1rem;
+  padding-inline: 5rem;
 }
 
 .header {
@@ -26,6 +27,6 @@ nav ul {
 
 .nav-link {
   color: rgb(22, 22, 185);
-  font-size: 1rem;
+  font-size: 1.2rem;
   text-decoration: none;
 }
