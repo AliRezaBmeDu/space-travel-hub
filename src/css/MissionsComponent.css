@@ -7,3 +7,15 @@ main {
 table {
   width: 100%;
 }
+
+table,
+th,
+td {
+  border: 1px solid rgba(131, 130, 130, 0.398);
+  border-collapse: collapse;
+  padding: 10px 15px;
+}
+
+tbody tr:nth-child(odd) {
+  background-color: rgb(233, 232, 232);
+}
