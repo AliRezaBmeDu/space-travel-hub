@@ -19,8 +19,6 @@ const ProfileRocket = () => {
 
   const reservedRockets = rockets.filter((rocket) => rocket.reserve === true);
 
-  console.log('reserved rockets', reservedRockets);
-
   if (reservedRockets.length === 0) {
     return (
       <div className="reserved-container">
