@@ -11,13 +11,13 @@ const Navbar = () => (
     </div>
     <ul>
       <li>
-        <Link to="/">Rockets</Link>
+        <Link to="/" className="nav-link">Rockets</Link>
       </li>
       <li>
-        <Link to="/missions">Mission</Link>
+        <Link to="/missions" className="nav-link">Mission</Link>
       </li>
       <li>
-        <Link to="/profile">My Profile</Link>
+        <Link to="/profile" className="nav-link">My Profile</Link>
       </li>
     </ul>
   </nav>

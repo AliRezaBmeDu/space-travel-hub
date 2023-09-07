@@ -24,7 +24,7 @@ nav ul {
   list-style-type: none;
 }
 
-nav ul li link {
+.nav-link {
   color: red;
   font-size: 1rem;
   text-decoration: none;
