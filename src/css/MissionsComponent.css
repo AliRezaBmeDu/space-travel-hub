@@ -7,3 +7,59 @@ main {
 table {
   width: 100%;
 }
+
+table,
+th,
+td {
+  border: 1px solid rgba(131, 130, 130, 0.398);
+  border-collapse: collapse;
+  padding: 10px 15px;
+}
+
+tbody tr:nth-child(odd) {
+  background-color: rgb(233, 232, 232);
+}
+
+.empty-space {
+  width: 15%;
+}
+
+.member-button {
+  white-space: nowrap;
+  padding: 5px;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+  color: #fff;
+}
+
+.active {
+  background-color: rgb(96, 165, 250);
+  text-transform: capitalize;
+  font-size: 0.7rem;
+}
+
+.non-active {
+  background-color: slategray;
+  text-transform: uppercase;
+  font-size: 0.6rem;
+}
+
+.mission-button {
+  width: 100%;
+  padding: 7px 20px;
+  background-color: transparent;
+  text-transform: capitalize;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.join-mission {
+  color: rgb(51, 64, 82);
+  border: 1px solid rgb(53, 67, 87);
+}
+
+.leave-mission {
+  border: 1px solid rgb(239, 68, 68);
+  color: rgb(239, 68, 68);
+}
