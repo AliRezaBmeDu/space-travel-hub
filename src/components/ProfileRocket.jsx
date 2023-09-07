@@ -4,11 +4,20 @@ import '../css/ProfileRocket.css';
 
 const ProfileRocket = () => {
   const { rockets } = useSelector((store) => store.rockets);
-  console.log('rockets', rockets);
+  console.log('rockets at profile rocket component', rockets);
+
+  if (!rockets) {
+    return (
+      <div className="reserved-container">
+        <h2>My Rockets</h2>
+        <div className="rocket-profile">
+          <p>Loading...</p>
+        </div>
+      </div>
+    );
+  }
 
   const reservedRockets = rockets.filter((rocket) => rocket.reserve === true);
-
-  console.log('reserved rockets', reservedRockets);
 
   if (reservedRockets.length === 0) {
     return (

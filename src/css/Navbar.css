@@ -1,11 +1,16 @@
 nav {
-  background-color: red;
-  color: white;
   display: flex;
   justify-content: space-between;
-  height: 4rem;
+  align-items: center;
+  background-color: rgb(252, 249, 249);
   padding: 1rem;
   padding-inline: 5rem;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
 }
 
 nav img {
@@ -20,7 +25,8 @@ nav ul {
   list-style-type: none;
 }
 
-nav ul li {
-  color: white;
-  font-size: 1rem;
+.nav-link {
+  color: rgb(22, 22, 185);
+  font-size: 1.2rem;
+  text-decoration: none;
 }
