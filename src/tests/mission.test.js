@@ -9,18 +9,22 @@ const missions = [
   {
     description: 'The Falcon 1 was an expendable launch system.',
     name: 'mission1',
+    id: 'one',
+    joined: true,
   },
   {
     description: 'The Falcon 2 was an expendable launch system.',
     name: 'mission2',
+    id: 'two',
+    joined: false,
   },
 ];
   // Create a mock Redux store
 const mockStore = configureMockStore();
 
-describe('RocketComponent', () => {
-  it('renders the missions properly', () => {
-    const initialState = { missions: { missions, loading: false, error: '' } };
+describe('MissionComponent', () => {
+  it('should render the missions properly', () => {
+    const initialState = { missions: { missions } };
     const store = mockStore(initialState);
     render(
       <Provider store={store}>

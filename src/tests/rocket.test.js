@@ -25,7 +25,7 @@ const rockets = [
 const mockStore = configureMockStore();
 
 describe('RocketComponent', () => {
-  it('renders loading message when isLoading is true', () => {
+  it('should render loading message when isLoading is true', () => {
     const initialState = { rockets: { rockets, isLoading: true } };
     const store = mockStore(initialState);
     // Render the component inside the Provider with the mock store

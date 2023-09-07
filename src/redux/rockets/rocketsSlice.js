@@ -11,7 +11,6 @@ export const getRockets = createAsyncThunk('rockets/getRocket', async () => {
     const output = response.json();
     return output;
   } catch (error) {
-    console.error('Error fetching data');
     throw error;
   }
 });
