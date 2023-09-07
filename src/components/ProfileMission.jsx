@@ -3,11 +3,8 @@ import '../css/ProfileRocket.css';
 
 const ProfileMission = () => {
   const { missions } = useSelector((store) => store.missions);
-  // console.log('rockets', rockets);
 
   const joinedMissions = missions.filter((mission) => mission.joined === true);
-
-  // console.log('reserved rockets', reservedRockets);
 
   if (joinedMissions.length === 0) {
     return (
