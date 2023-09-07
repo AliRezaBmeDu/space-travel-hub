@@ -24,7 +24,7 @@ const rocketsSlice = createSlice({
       const id = action.payload;
       const rocket = state.rockets.find((rocket) => rocket.rocketId === id);
       rocket.reserve = !rocket.reserve;
-      localStorage.setItem(id, rocket.reserve);
+      localStorage.setItem(id, JSON.stringify(rocket.reserve));
     },
   },
   extraReducers: {
@@ -42,11 +42,7 @@ const rocketsSlice = createSlice({
             description,
             flickr_images: flickrImages,
           } = rocket;
-          const bool = localStorage.getItem(rocketId);
-          let reserve = false;
-          if (bool === 'true') {
-            reserve = bool;
-          }
+          const reserve = JSON.parse(localStorage.getItem(rocketId)) || false;
           return {
             rocketName, rocketId, description, flickrImages, reserve,
           };

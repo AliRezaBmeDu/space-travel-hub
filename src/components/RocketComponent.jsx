@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getRockets, toggleReserve } from '../redux/rockets/rocketsSlice';
+import { toggleReserve } from '../redux/rockets/rocketsSlice';
 import '../css/RocketComponent.css';
 
 // Placeholder image URL for the first rocket if it fails to load
@@ -11,10 +11,6 @@ const RocketComponent = () => {
   const { rockets } = useSelector((store) => store.rockets);
   const { isLoading } = useSelector((store) => store.rockets);
   const [firstRocketImageLoadError, setFirstRocketImageLoadError] = useState(false);
-
-  useEffect(() => {
-    dispatch(getRockets());
-  }, [dispatch]);
 
   // Function to handle image load error for the first rocket
   const handleFirstRocketImageError = () => {

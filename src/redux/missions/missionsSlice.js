@@ -23,7 +23,7 @@ const missionsSlice = createSlice({
       const { id } = action.payload;
       const mission = state.missions.find((mission) => mission.id === id);
       mission.joined = !mission.joined;
-      localStorage.setItem(id, !mission.joined);
+      localStorage.setItem(id, JSON.stringify(mission.joined));
     },
   },
   extraReducers: (builder) => {
@@ -37,7 +37,7 @@ const missionsSlice = createSlice({
         if (data) {
           state.missions = data.map((mission) => {
             const { mission_id: id, mission_name: name, description } = mission;
-            const joined = localStorage.getItem(id) || false;
+            const joined = JSON.parse(localStorage.getItem(id)) || false;
             return {
               id, name, description, joined,
             };
