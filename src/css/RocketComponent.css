@@ -1,0 +1,72 @@
+:root {
+  --reserve-fontsize: 1rem;
+}
+
+.loading {
+  text-align: center;
+  margin-top: 10rem;
+  font-size: 5rem;
+}
+
+.rocket-container {
+  background-color: lightblue;
+  color: darkblue;
+}
+
+.single-rocket {
+  display: flex;
+  justify-content: space-between;
+  padding-inline: 5%;
+  gap: 1rem;
+  margin-top: 2rem;
+  padding-top: 0;
+}
+
+.rocket-info {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 1rem;
+  padding-top: 0;
+  max-width: 80%;
+}
+
+.single-rocket strong {
+  font-size: 1.6rem;
+}
+
+.single-rocket img {
+  width: 20%;
+}
+
+.single-rocket p {
+  font-size: 1.2rem;
+}
+
+.reserved-state {
+  border-radius: 4px;
+  padding: 0.2rem;
+  padding-inline: 0.5rem;
+  font-size: 0.8rem;
+  background-color: #57738f;
+  color: white;
+  margin-right: 16px;
+}
+
+.reserve-btn {
+  box-sizing: border-box;
+  border-radius: 4px;
+  background-color: #966cd4;
+  color: white;
+  height: 2.5rem;
+  padding: 0.5rem;
+  font-size: 1rem;
+  border-color: #966cd4;
+  width: 9.5rem;
+}
+
+.cancel-reservation-btn {
+  background-color: white;
+  color: #001f3f;
+  border: solid 1px darkblue;
+  width: 11rem;
+}

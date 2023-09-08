@@ -1,0 +1,32 @@
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgb(252, 249, 249);
+  padding: 1rem;
+  padding-inline: 5rem;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+nav img {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+nav ul {
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+  list-style-type: none;
+}
+
+.nav-link {
+  color: rgb(22, 22, 185);
+  font-size: 1.2rem;
+  text-decoration: none;
+}
