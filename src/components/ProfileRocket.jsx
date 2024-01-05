@@ -4,7 +4,6 @@ import '../css/ProfileRocket.css';
 
 const ProfileRocket = () => {
   const { rockets } = useSelector((store) => store.rockets);
-  console.log('rockets at profile rocket component', rockets);
 
   if (!rockets) {
     return (

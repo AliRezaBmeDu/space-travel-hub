@@ -11,6 +11,7 @@ export const getRockets = createAsyncThunk('rockets/getRocket', async () => {
     const output = response.json();
     return output;
   } catch (error) {
+    // eslint-disable-next-line no-console
     console.error('Error fetching data');
     throw error;
   }
