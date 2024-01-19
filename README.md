@@ -1,6 +1,7 @@
 <a name="readme-top"></a>
-![Logo]('./src/assets
-/planet.png')
+
+<img height="50" src="./src/assets/planet.png">
+
 <!-- TABLE OF CONTENTS -->
 
 # 📗 Table of Contents
